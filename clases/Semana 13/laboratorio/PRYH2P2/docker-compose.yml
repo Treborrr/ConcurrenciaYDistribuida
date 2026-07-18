@@ -1,0 +1,43 @@
+services:
+  node1:
+    build: 
+      context: ./node1
+      dockerfile: Dockerfile
+    ports:
+      - "19002:9002"
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.2
+  node2:
+    build: 
+      context: ./node2
+      dockerfile: Dockerfile
+    ports:
+      - "29002:9002"
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.3
+  node3:
+    build: 
+      context: ./node3
+      dockerfile: Dockerfile
+    ports:
+      - "39002:9002"
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.4
+  node4:
+    build: 
+      context: ./node4
+      dockerfile: Dockerfile
+    ports:
+      - "49002:9002"
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.5
+networks:
+  my_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.20.0.0/24"
